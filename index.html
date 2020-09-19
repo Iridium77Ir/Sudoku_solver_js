@@ -8,10 +8,14 @@
 </head>
 <body>
     <br>
+    <script defer src="creator.js"></script>
     <script defer src="solver.js"></script>
+    <script defer src="checker.js"></script>
     <div id="grid"></div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <button onclick="start()">Start</button>
+    <button onclick="createBoard()">Random</button>
+    <button onclick="clearBoard()">Clear</button>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <input type="range" min="0" max="100" value="50" class="slider" id="timeMs">
 </body>

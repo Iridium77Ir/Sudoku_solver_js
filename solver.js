@@ -1,15 +1,3 @@
-const _board = [
-    ['8', '', '', '', '', '', '', '', ''],
-    ['', '', '3', '6', '', '', '', '', ''],
-    ['', '7', '', '', '9', '', '2', '', ''],
-    ['', '5', '', '', '', '7', '', '', ''],
-    ['', '', '', '', '4', '5', '7', '', ''],
-    ['', '', '', '1', '', '', '', '3', ''],
-    ['', '', '1', '', '', '', '', '6', '8'],
-    ['', '', '8', '5', '', '', '', '1', ''],
-    ['', '9', '', '', '', '', '4', '', ''],
-];
-
 function wait(milliseconds) {
     if(milliseconds == 0) {
         return true;
@@ -60,19 +48,25 @@ function start() {
     sudokuSolver(_board, time);
 };
 
-var htmlifiedBoard = "";
-for(var i = 0; i < 9; i++) {
-    for(var j = 0; j < 9; j++) {
-        htmlifiedBoard += '<input type="text" id="' + i + ':' + j + '" value="' + _board[i][j] + '">';
-        if(j == 8) {
-            htmlifiedBoard += '<br>';
-            if(i%3 == 2) {
+
+function renderBoard() {
+    var htmlifiedBoard = "";
+    for(var i = 0; i < 9; i++) {
+        for(var j = 0; j < 9; j++) {
+            htmlifiedBoard += '<input type="text" id="' + i + ':' + j + '" value="' + _board[i][j] + '" oninput="checkboardAfterInput(this)">';
+            if(j == 8) {
                 htmlifiedBoard += '<br>';
+                if(i%3 == 2) {
+                    htmlifiedBoard += '<br>';
+                }
             }
-        }
-        if(j%3 == 2) {
-            htmlifiedBoard += ' ';
-        }
+            if(j%3 == 2) {
+                htmlifiedBoard += ' ';
+            }
+        };
     };
-};
-document.getElementById('grid').innerHTML = htmlifiedBoard;
+    document.getElementById('grid').innerHTML = htmlifiedBoard;
+}
+
+
+createBoard();
